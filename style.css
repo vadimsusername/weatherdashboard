@@ -1,0 +1,11 @@
+header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.leftside {
+    background-color: #f5f0e3;
+}
