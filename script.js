@@ -1,6 +1,15 @@
 var cities = [];
 var apiKey = "4b4e6e625a6b65f633ce3d723dd07e92";
 
+if(localStorage.getItem("cities")){
+    cities = JSON.parse(localStorage.getItem("cities"));
+    for(var i = 0; i < cities.length; i ++){
+        var li = $("<li class='list-group-item'>" + cities[i] + "</li>");
+       
+        $("ul").append(li);  
+    }
+
+}
 $("#searchBtn").on("click",function(event){
     event.preventDefault();
 
@@ -50,6 +59,7 @@ $("#searchBtn").on("click",function(event){
         wind.text("Wind Speed: " + response.wind.speed + " MPH");
         $("main").append(wind);
     
+        document.querySelector("main").style.display = "block";
         var lon = response.coord.lon;
         var lat = response.coord.lat;
 
@@ -145,6 +155,8 @@ document.querySelector("ul").addEventListener("click",function(event){
             var wind = $("<p>");
             wind.text("Wind Speed: " + response.wind.speed + " MPH");
             $("main").append(wind);
+
+            document.querySelector("main").style.display = "block";
 
             var lon = response.coord.lon;
             var lat = response.coord.lat;
