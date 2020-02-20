@@ -15,10 +15,10 @@ $("#searchBtn").on("click",function(event){
         $("ul").append(li);     
     }
     
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
 
     //var forecastURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=5&APPID=" + apiKey;
-    var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city +  "&units=imperial" + "&APPID=" + apiKey;
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +  "&units=imperial" + "&APPID=" + apiKey;
     //var response = JSON.parse(localStorage.getItem("london"));
     //console.log(response);
     
@@ -110,10 +110,10 @@ document.querySelector("ul").addEventListener("click",function(event){
         var city = event.target.textContent;
         console.log(city);
 
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + apiKey;
 
         //var forecastURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=5&APPID=" + apiKey;
-        var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city +  "&units=imperial" + "&APPID=" + apiKey;
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +  "&units=imperial" + "&APPID=" + apiKey;
         //var response = JSON.parse(localStorage.getItem("london"));
         //console.log(response);
         
