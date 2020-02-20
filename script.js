@@ -64,7 +64,7 @@ $("#searchBtn").on("click",function(event){
         var lat = response.coord.lat;
 
         
-        var uvQueryUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+        var uvQueryUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
         
         
         console.log(uvQueryUrl);
@@ -166,7 +166,7 @@ document.querySelector("ul").addEventListener("click",function(event){
             var lon = response.coord.lon;
             var lat = response.coord.lat;
 
-            var uvQueryUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+            var uvQueryUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
             
             
             console.log(uvQueryUrl);
