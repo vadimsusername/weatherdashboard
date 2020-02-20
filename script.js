@@ -1,6 +1,6 @@
 var cities = [];
 var apiKey = "4b4e6e625a6b65f633ce3d723dd07e92";
-
+//localStorage.clear();
 if(localStorage.getItem("cities")){
     cities = JSON.parse(localStorage.getItem("cities"));
     for(var i = 0; i < cities.length; i ++){
@@ -36,7 +36,7 @@ $("#searchBtn").on("click",function(event){
 
     $.ajax({
         url: queryURL,
-        method: "GET"
+        method: "GET",
     }).then(function(response){
         console.log(response);
 
@@ -64,7 +64,7 @@ $("#searchBtn").on("click",function(event){
         var lat = response.coord.lat;
 
         
-        /*var uvQueryUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+        var uvQueryUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
         
         
         console.log(uvQueryUrl);
@@ -74,8 +74,12 @@ $("#searchBtn").on("click",function(event){
             method: "GET"
         }).then(function(uvindex){
             console.log(uvindex);
+            var uvi = $("<p>");
+            uvi.text("UV Index: " + uvindex.value);
+            $("main").append(uvi);
+            
         })
-        */
+        
 
         //localStorage.setItem("london",JSON.stringify(response));
     });
@@ -94,12 +98,12 @@ $("#searchBtn").on("click",function(event){
             var day = $("<h5>");
             day.text((date.getMonth()+1) + "/"+ (date.getDate() + i + 1) + "/" + date.getFullYear());  
             div.append(day);
-            console.log(day);
+            
 
             var temp = $("<p>"); 
             temp.text("Temp: " + response.list[days[i]].main.temp + " °F");
             div.append(temp);
-            console.log(temp);
+            
 
             var humidity = $("<p>");
             humidity.text("Humidity: " + response.list[days[i]].main.humidity + "%");
@@ -132,9 +136,10 @@ document.querySelector("ul").addEventListener("click",function(event){
 
         $.ajax({
             url: queryURL,
-            method: "GET"
+            method: "GET",
+        
         }).then(function(response){
-            console.log(response);
+            
 
         
             $("main").empty();
@@ -160,13 +165,29 @@ document.querySelector("ul").addEventListener("click",function(event){
 
             var lon = response.coord.lon;
             var lat = response.coord.lat;
+
+            var uvQueryUrl = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+            
+            
+            console.log(uvQueryUrl);
+            
+            $.ajax({
+                url: uvQueryUrl,
+                method: "GET"
+            }).then(function(uvindex){
+                console.log(uvindex);
+                var uvi = $("<p>");
+                uvi.text("UV Index: " + uvindex.value);
+                $("main").append(uvi);
+                
+            })
         });
 
         $.ajax({
             url: forecastURL,
             method: "GET"
         }).then(function(response){
-            console.log(response);
+           
             $(".five-day").empty();
     
             var days = [0,7,15,23,31];
@@ -176,13 +197,12 @@ document.querySelector("ul").addEventListener("click",function(event){
                 var day = $("<h5>");
                 day.text((date.getMonth()+1) + "/"+ (date.getDate() + i + 1) + "/" + date.getFullYear());  
                 div.append(day);
-                console.log(day);
+              
     
                 var temp = $("<p>"); 
                 temp.text("Temp: " + response.list[days[i]].main.temp + " °F");
                 div.append(temp);
-                console.log(temp);
-
+               
                 var humidity = $("<p>");
                 humidity.text("Humidity: " + response.list[days[i]].main.humidity + "%");
                 div.append(humidity);
